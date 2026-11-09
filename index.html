@@ -49,7 +49,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      background: var(--paper2);
       color: var(--muted);
       font-size: 13px
     }
@@ -99,7 +98,6 @@
     .ph {
       overflow: hidden;
       border-radius: 6px;
-      background: var(--paper2)
     }
 
     header {
@@ -137,8 +135,10 @@
     .btn {
       display: inline-block;
       text-decoration: none;
+      text-wrap: nowrap;
+      white-space: nowrap;
       font-weight: 700;
-      padding: 13px 28px;
+      padding: 10px 22px;
       border-radius: 999px;
       background: var(--moss);
       color: #fff;
@@ -162,7 +162,8 @@
 
     nav .btn {
       padding: 8px 20px;
-      font-size: 14px
+      font-size: 14px;
+      white-space: nowrap
     }
 
     .hero {
@@ -176,21 +177,17 @@
       display: flex;
       gap: clamp(16px, 2.5vw, 32px);
       justify-content: center;
-      align-items: flex-start;
-      padding: clamp(24px, 3vw, 40px)
+      padding: clamp(24px, 3vw, 40px);
+    }
+
+    .hero-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero h1 {
-      writing-mode: vertical-rl;
-      font-family: var(--brush);
-      font-weight: 400;
-      position: relative;
-      padding-left: clamp(22px, 3vw, 34px);
-      line-height: 1.1;
-      letter-spacing: .02em;
       filter: url(#rough);
-      transform: rotate(-3deg);
-      transform-origin: top right
     }
 
     .hero h1 span {
@@ -198,34 +195,9 @@
     }
 
     .hero h1 .a {
-      font-size: clamp(30px, 3.8vw, 52px);
-      margin-top: .9em
-    }
-
-    .hero h1 .b {
-      font-size: clamp(48px, 6.2vw, 86px);
-      color: var(--ink)
-    }
-
-    .hero h1 .bang {
-      font-style: normal;
-      color: var(--seal);
-      display: inline-block;
-      transform: rotate(8deg) scale(1.15);
-      transform-origin: center
-    }
-
-    .hero h1 .slash {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: clamp(18px, 2.5vw, 28px);
-      height: 100%;
-      pointer-events: none
-    }
-
-    .hero h1 .slash path {
-      fill: var(--green)
+      width: clamp(140px, 22vw, 300px);
+      height: auto;
+      padding: 9px;
     }
 
     .hero-copy h2 {
@@ -253,16 +225,20 @@
       border-radius: 0;
       display: flex;
       align-items: center;
-      background: #f8f1ed
     }
 
     .hero .ph img {
-      height: auto
+      height: auto;
+      max-width: 100%;
+      max-height: 475px;
+      object-fit: contain;
+      margin: 0 auto;
     }
 
     .seal {
+      z-index: 1;
       position: absolute;
-      left: calc(46% - 44px);
+      left: calc(100% / 2.15 - 44px);
       bottom: 48px;
       width: 88px;
       height: 88px;
@@ -510,6 +486,219 @@
       margin: 0 auto 36px
     }
 
+    .contact-form {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: left
+    }
+
+    .contact-form h3 {
+      margin: 32px 0 12px;
+      text-align: center
+    }
+
+    .contact-form .form-intro {
+      margin-bottom: 12px;
+      text-align: center
+    }
+
+    .required-note {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right
+    }
+
+    .required-mark {
+      color: var(--seal)
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) minmax(0, 2.5fr);
+      gap: 20px;
+      align-items: start;
+      padding: 20px 24px;
+      border-top: 1px solid var(--line);
+      text-align: left
+    }
+
+    .form-row>label,
+    .form-row>.form-label {
+      padding-top: 10px;
+      font-weight: 700
+    }
+
+    .form-row fieldset {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      border: 0;
+      padding: 8px 0
+    }
+
+    .form-row fieldset label,
+    .privacy-consent {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .form-row input:not([type="checkbox"]),
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 10px 12px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      line-height: 1.5
+    }
+
+    .form-row input[type="checkbox"],
+    .privacy-consent input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--green-deep)
+    }
+
+    .form-pair,
+    .form-postal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center
+    }
+
+    .form-phone {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 8px;
+      align-items: center
+    }
+
+    .form-pair>input {
+      flex: 1 1 150px
+    }
+
+    .form-postal>input {
+      flex: 0 1 120px;
+      max-width: 120px
+    }
+
+    .form-postal>span {
+      flex: none
+    }
+
+    .form-address {
+      display: grid;
+      gap: 10px
+    }
+
+    .form-row textarea {
+      min-height: 180px;
+      resize: vertical
+    }
+
+    .privacy-policy {
+      max-height: 260px;
+      overflow: auto;
+      margin: 12px 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: #fff;
+      text-align: left;
+      font-size: 14px
+    }
+
+    .privacy-policy h4 {
+      margin-bottom: 8px;
+      font-family: var(--mincho);
+      font-size: 17px
+    }
+
+    .privacy-policy p+p {
+      margin-top: 12px
+    }
+
+    .privacy-consent {
+      justify-content: center;
+      margin: 16px 0 24px;
+      font-weight: 700
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px
+    }
+
+    .form-actions button {
+      border: 0;
+      cursor: pointer;
+      font: inherit
+    }
+
+    .form-actions .btn.ghost {
+      border: 2px solid var(--ink)
+    }
+
+    .form-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center
+    }
+
+    .confirmation {
+      max-width: 860px;
+      margin: 32px auto 0;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper2);
+      text-align: left
+    }
+
+    .confirmation h3 {
+      margin-bottom: 8px;
+      text-align: center
+    }
+
+    .confirmation>p {
+      margin-bottom: 20px;
+      text-align: center
+    }
+
+    .confirmation-summary {
+      display: grid;
+      grid-template-columns: minmax(130px, .7fr) minmax(0, 2fr);
+      border-top: 1px solid var(--line)
+    }
+
+    .confirmation-summary dt,
+    .confirmation-summary dd {
+      margin: 0;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      overflow-wrap: anywhere;
+      white-space: pre-wrap
+    }
+
+    .confirmation-summary dt {
+      font-weight: 700
+    }
+
+    .confirmation[hidden],
+    .contact-form[hidden] {
+      display: none
+    }
+
     .contact-details {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
@@ -566,20 +755,11 @@
         padding: 32px 24px
       }
 
-      .hero h1 .a {
-        font-size: clamp(28px, 5vw, 40px)
-      }
-
-      .hero h1 .b {
-        font-size: clamp(46px, 8vw, 72px)
-      }
-
       .seal {
         left: auto;
         right: 24px;
         bottom: auto;
-        top: calc(100% - 0px);
-        display: none
+        top: 0;
       }
 
       .steps,
@@ -614,6 +794,17 @@
       .hero-copy {
         max-width: 100%;
         padding-top: 0
+      }
+    }
+
+    @media(max-width:420px) {
+      header .logo {
+        height: 24px
+      }
+
+      nav .btn {
+        padding: 8px 10px;
+        font-size: 13px
       }
     }
 
@@ -774,6 +965,38 @@
       margin: 0 6px 10px
     }
 
+    @media(max-width:600px) {
+      .seal {
+        position: static;
+        display: grid;
+        margin-top: 16px;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 16px 8px
+      }
+
+      .form-row>label,
+      .form-row>.form-label {
+        padding-top: 0
+      }
+
+      .confirmation {
+        padding: 20px 12px
+      }
+
+      .confirmation-summary {
+        grid-template-columns: 1fr
+      }
+
+      .confirmation-summary dt {
+        padding-bottom: 0;
+        border-bottom: 0
+      }
+    }
+
     @media(max-width:860px) {
       .facts {
         grid-template-columns: 1fr
@@ -867,6 +1090,11 @@
       color: var(--ink);
       font-size: 17px
     }
+
+    .insta .btn {
+      display: table;
+      margin: 12px auto 0
+    }
   </style>
 </head>
 
@@ -906,18 +1134,23 @@
   <main id="top">
     <div class="hero">
       <div class="hero-text">
-        <h1 aria-label="とにかくうまい！"><svg class="slash" viewBox="0 0 34 400" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M6 0 C2 120 14 260 4 400 C20 270 16 120 30 0 Z" />
-          </svg><span class="a" aria-hidden="true">とにかく</span><span class="b" aria-hidden="true">うまい<i
-              class="bang">！</i></span></h1>
+        <div class="hero-title">
+          <h1 aria-label="とにかくうまい！">
+            <div class="ph">
+              <img class="a" src="images/tonikaku_umai.jpg" alt="とにかくうまい！">
+            </div>
+          </h1>
+          <div class="seal" aria-hidden="true">静岡<br>産</div>
+        </div>
         <div class="hero-copy">
           <h2>心まで、とろける豚肉。</h2>
           <p>富士山の麓から、サラッとうまい肉をお届け。目の届く安心の中で育った、脂がとろける静岡のプレミアムポークです。</p>
-          <a class="btn" href="#products">商品を見る</a><a class="btn ghost" href="#contact">ご相談はこちら</a>
+          <div style="display: flex; flex-wrap: wrap;">
+            <a class="btn" href="#products">商品を見る</a><a class="btn ghost" href="#contact">ご相談はこちら</a>
+          </div>
         </div>
       </div>
       <div class="ph"><img src="images/695f426c9fca6070f0eca752.png" alt="プレミアムポーク専門店E-REX"></div>
-      <div class="seal" aria-hidden="true">静岡<br>産</div>
     </div>
 
     <section id="kodawari">
@@ -1070,11 +1303,164 @@
         <div class="insta">
           <a class="qr" href="http://instagram.com/e_rex_e_pork" target="_blank" rel="noopener"><img
               src="images/642513e0e0320973e9ca5d8b.jpg" alt="E-REXのInstagram QRコード"></a>
-          <p><strong>最新情報はInstagramで！</strong><br>QRコードを読み取って、ぜひフォローしてください。</p>
+          <p><strong>最新情報はInstagramで！</strong><br>QRコードを読み取って、ぜひフォローしてください。<br>
+            <a class="btn ghost" href="http://instagram.com/e_rex_e_pork" target="_blank" rel="noopener">Instagram</a>
+          </p>
         </div>
-        <p><a class="btn" href="https://e-rex-e-pork.tkc.best-hp.jp/form/e-rex-e-pork/contact" target="_blank"
-            rel="noopener">お問い合わせフォーム</a> <a class="btn ghost" href="http://instagram.com/e_rex_e_pork" target="_blank"
-            rel="noopener">Instagram</a></p>
+        <form class="contact-form" id="contact-form">
+          <h3>お問合せフォーム</h3>
+          <p class="form-intro">以下のフォームに必要事項を入力して「入力内容を確認」ボタンを押してください。</p>
+          <p class="required-note"><span class="required-mark">※</span>は必須項目です。</p>
+
+          <div class="form-row">
+            <span class="form-label" id="inquiry-type-label">お問合せ種別 <span class="required-mark">※</span></span>
+            <fieldset aria-labelledby="inquiry-type-label">
+              <label><input type="checkbox" name="inquiryType" value="事業内容について">事業内容について</label>
+              <label><input type="checkbox" name="inquiryType" value="お取引について">お取引について</label>
+              <label><input type="checkbox" name="inquiryType" value="採用について">採用について</label>
+              <label><input type="checkbox" name="inquiryType" value="その他">その他</label>
+            </fieldset>
+          </div>
+          <div class="form-row">
+            <label for="family-name">お名前 <span class="required-mark">※</span></label>
+            <div class="form-pair">
+              <input id="family-name" name="familyName" type="text" autocomplete="family-name" placeholder="姓" required>
+              <input name="givenName" type="text" autocomplete="given-name" aria-label="名" placeholder="名" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="family-kana">フリガナ <span class="required-mark">※</span></label>
+            <div class="form-pair">
+              <input id="family-kana" name="familyKana" type="text" placeholder="セイ" required>
+              <input name="givenKana" type="text" aria-label="メイ" placeholder="メイ" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="postal-first">郵便番号</label>
+            <div class="form-postal">
+              <input id="postal-first" name="postalFirst" type="text" inputmode="numeric" pattern="[0-9]{3}"
+                maxlength="3" autocomplete="postal-code" aria-label="郵便番号の上3桁">
+              <span aria-hidden="true">-</span>
+              <input name="postalLast" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4"
+                aria-label="郵便番号の下4桁">
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="prefecture">住所</label>
+            <div class="form-address">
+              <select id="prefecture" name="prefecture">
+                <option value="">都道府県を選択してください</option>
+                <option>北海道</option>
+                <option>青森県</option>
+                <option>岩手県</option>
+                <option>宮城県</option>
+                <option>秋田県</option>
+                <option>山形県</option>
+                <option>福島県</option>
+                <option>茨城県</option>
+                <option>栃木県</option>
+                <option>群馬県</option>
+                <option>埼玉県</option>
+                <option>千葉県</option>
+                <option>東京都</option>
+                <option>神奈川県</option>
+                <option>新潟県</option>
+                <option>富山県</option>
+                <option>石川県</option>
+                <option>福井県</option>
+                <option>山梨県</option>
+                <option>長野県</option>
+                <option>岐阜県</option>
+                <option>静岡県</option>
+                <option>愛知県</option>
+                <option>三重県</option>
+                <option>滋賀県</option>
+                <option>京都府</option>
+                <option>大阪府</option>
+                <option>兵庫県</option>
+                <option>奈良県</option>
+                <option>和歌山県</option>
+                <option>鳥取県</option>
+                <option>島根県</option>
+                <option>岡山県</option>
+                <option>広島県</option>
+                <option>山口県</option>
+                <option>徳島県</option>
+                <option>香川県</option>
+                <option>愛媛県</option>
+                <option>高知県</option>
+                <option>福岡県</option>
+                <option>佐賀県</option>
+                <option>長崎県</option>
+                <option>熊本県</option>
+                <option>大分県</option>
+                <option>宮崎県</option>
+                <option>鹿児島県</option>
+                <option>沖縄県</option>
+              </select>
+              <input name="address" type="text" autocomplete="street-address" aria-label="市区町村・番地・建物名"
+                placeholder="市区町村・番地・建物名">
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="phone-first">電話番号 <span class="required-mark">※</span></label>
+            <div class="form-phone">
+              <input id="phone-first" name="phoneFirst" type="tel" inputmode="tel" autocomplete="tel-national"
+                aria-label="電話番号の最初の部分" required>
+              <span aria-hidden="true">-</span>
+              <input name="phoneMiddle" type="tel" inputmode="tel" aria-label="電話番号の中央部分" required>
+              <span aria-hidden="true">-</span>
+              <input name="phoneLast" type="tel" inputmode="tel" aria-label="電話番号の最後の部分" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="email">メールアドレス <span class="required-mark">※</span></label>
+            <div class="form-address">
+              <input id="email" name="email" type="email" autocomplete="email" required>
+              <input name="emailConfirm" type="email" aria-label="メールアドレス（確認用）" placeholder="確認のためもう一度入力してください"
+                required>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="message">お問合せ内容 <span class="required-mark">※</span></label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <div class="privacy-policy" tabindex="0">
+            <h4>個人情報の取り扱いについて</h4>
+            <p>
+              1．個人情報の定義<br>個人情報とは、個人に関する情報であり、氏名・生年月日・住所をはじめ電話番号・メールアドレスなど、個人が識別できるものをいいます。また、組み合わせることによって個人が識別できる情報も個人情報として取り扱います。
+            </p>
+            <p>
+              2．個人情報を収集する目的<br>当社のサービスに関する個人情報使用目的は下記となります。<br>・サービスに関する連絡および通知<br>・当社からの情報提供（広告を含む）<br>・お客様のご意見やご感想の回答のお願い
+            </p>
+            <p>
+              3．個人情報の利用・提供<br>個人情報は前述の目的の範囲内で利用いたします。また、原則外部の第三者に個人情報を提供することはありませんが、その場合も本人の了解を得た上で行います。サイトからご登録いただきました個人情報の開示・訂正・削除につきましてはメールにてお申し出ください。また、その他の情報の開示・訂正・削除を希望される場合は、後述の連絡先メールアドレスまでメールにてご連絡ください。折り返し開示・訂正・削除手続きについてご案内します。なお、ご本人であることの確認が十分に取れない場合、あるいは当社の業務に支障がある場合には、ご要望にお応えできない場合もございますので、あらかじめご了承下さい。
+            </p>
+            <p>
+              4．外部委託<br>個人情報の処理を外部に委託する際に、個人情報を預託する場合があります。委託処理を行う場合には、十分な個人情報保護水準を確保していることを条件として委託先を選定し、機密保持契約を結んだ上で行います。
+            </p>
+            <p>5．個人情報の管理<br>個人情報への不当なアクセスまたは個人情報の紛失、破壊、改竄、漏洩などの危険に対して、技術面及び組織面において必要な安全対策を継続的に講じるよう努めています。</p>
+            <p>6．お問合せなど<br>本件に関するお問合せは下記までお願い申し上げます。<br>株式会社E-REX 個人情報保護責任者 瀧下<br><a
+                href="mailto:e.rex.e.pork@gmail.com">e.rex.e.pork@gmail.com</a></p>
+          </div>
+          <label class="privacy-consent"><input name="privacyConsent" type="checkbox" required>個人情報の取り扱いに同意する</label>
+          <div class="form-actions">
+            <button class="btn" type="submit">入力内容を確認</button>
+          </div>
+          <p class="form-note">確認後、「メール作成画面を開く」を押すと、お使いのメールアプリでメールが作成されます。メールアプリから送信してください。</p>
+        </form>
+
+        <section class="confirmation" id="contact-confirmation" aria-labelledby="confirmation-title" hidden>
+          <h3 id="confirmation-title">入力内容の確認</h3>
+          <p>内容をご確認ください。修正する場合は「入力画面に戻る」を押してください。</p>
+          <dl class="confirmation-summary" id="confirmation-summary"></dl>
+          <div class="form-actions" style="margin-top:24px">
+            <a class="btn" id="send-email" href="mailto:e.rex.e.pork@gmail.com">メール作成画面を開く</a>
+            <button class="btn ghost" id="edit-contact" type="button">入力画面に戻る</button>
+          </div>
+          <p class="form-note">このサイトからメールは自動送信されません。メールアプリで内容を確認し、送信操作を完了してください。</p>
+        </section>
       </div>
     </section>
   </main>
@@ -1128,6 +1514,74 @@
     lightbox.addEventListener('click', event => {
       const bounds = lightbox.getBoundingClientRect();
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) lightbox.close();
+    });
+
+    const contactForm = document.querySelector('#contact-form');
+    const confirmation = document.querySelector('#contact-confirmation');
+    const confirmationSummary = document.querySelector('#confirmation-summary');
+    const inquiryTypeInputs = Array.from(contactForm.querySelectorAll('input[name="inquiryType"]'));
+    const emailInput = contactForm.elements.email;
+    const emailConfirmInput = contactForm.elements.emailConfirm;
+
+    const updateInquiryTypeValidity = () => {
+      inquiryTypeInputs[0].setCustomValidity(
+        inquiryTypeInputs.some(input => input.checked) ? '' : 'お問合せ種別を1つ以上選択してください。'
+      );
+    };
+    const updateEmailValidity = () => {
+      emailConfirmInput.setCustomValidity(
+        emailConfirmInput.value === emailInput.value ? '' : 'メールアドレスが一致しません。'
+      );
+    };
+
+    inquiryTypeInputs.forEach(input => input.addEventListener('change', updateInquiryTypeValidity));
+    emailInput.addEventListener('input', updateEmailValidity);
+    emailConfirmInput.addEventListener('input', updateEmailValidity);
+    document.querySelector('#edit-contact').addEventListener('click', () => {
+      confirmation.hidden = true;
+      contactForm.hidden = false;
+      contactForm.querySelector('button[type="submit"]').focus();
+    });
+
+    contactForm.addEventListener('submit', event => {
+      event.preventDefault();
+      updateInquiryTypeValidity();
+      updateEmailValidity();
+      if (!contactForm.reportValidity()) return;
+
+      const values = new FormData(contactForm);
+      const inquiryTypes = values.getAll('inquiryType').join('、');
+      const postalCode = [values.get('postalFirst'), values.get('postalLast')].filter(Boolean).join('-');
+      const address = [values.get('prefecture'), values.get('address')].filter(Boolean).join(' ');
+      const phone = [values.get('phoneFirst'), values.get('phoneMiddle'), values.get('phoneLast')].join('-');
+      const summary = [
+        ['お問合せ種別', inquiryTypes],
+        ['お名前', `${values.get('familyName')} ${values.get('givenName')}`],
+        ['フリガナ', `${values.get('familyKana')} ${values.get('givenKana')}`],
+        ['郵便番号', postalCode],
+        ['住所', address],
+        ['電話番号', phone],
+        ['メールアドレス', values.get('email')],
+        ['お問合せ内容', values.get('message')]
+      ];
+
+      confirmationSummary.replaceChildren();
+      summary.forEach(([label, value]) => {
+        const term = document.createElement('dt');
+        const description = document.createElement('dd');
+        term.textContent = label;
+        description.textContent = value || '—';
+        confirmationSummary.append(term, description);
+      });
+
+      const emailBody = summary.map(([label, value]) => `${label}: ${value || '—'}`).join('\r\n');
+      const subject = 'E-REX お問合せ';
+      document.querySelector('#send-email').href =
+        `mailto:e.rex.e.pork@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+
+      contactForm.hidden = true;
+      confirmation.hidden = false;
+      confirmation.querySelector('a').focus();
     });
 
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
