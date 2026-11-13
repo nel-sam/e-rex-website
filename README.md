@@ -1,4 +1,4 @@
-## E-Rex - Premium Japanese Pork
+## E-Rex: Premium Japanese Pork
 
 # The website
 
